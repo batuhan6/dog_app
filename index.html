@@ -197,7 +197,7 @@
         /* Aksiyona çağrı bölümü (butonlar) */
         .cta-section {
             text-align: center; /* Ortala */
-            margin-top: 45px; /* Üst boşluk */
+            margin-top: 40px; /* Üst boşluk */
         }
 
         /* İletişim butonları */
@@ -335,6 +335,20 @@
             .dog-name { font-size: 2rem; } /* Köpek adı boyutunu küçült */
             .profile-card { padding: 20px; } /* Kart iç boşluğunu azalt */
             .info-grid { grid-template-columns: 1fr; } /* Tek sütun yap */
+            
+            /* Sadece mobil için buton ayarları - bilgisayar görünümünü değiştirmez */
+            .contact-btn {
+                display: block; /* Blok element yap - alt alta dizilsin */
+                width: 80%; /* Genişliği %80 yap */
+                margin: 10px auto; /* Ortala ve üst-alt 10px boşluk */
+            }
+        }
+        
+        /* Çok küçük ekranlar için (iPhone SE gibi) - sadece buton aralığını artır */
+        @media (max-width: 480px) {
+            .contact-btn {
+                margin: 15px auto; /* Butonlar arası boşluğu artır */
+            }
         }
     </style>
 </head>
