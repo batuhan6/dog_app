@@ -353,8 +353,8 @@
             <!-- Profil başlığı -->
             <div class="profile-header">
                 <div class="dog-photo" onclick="changePhoto()">🐕</div>
-                <div class="dog-name">Charlie</div>
-                <div class="dog-age">3 yaşında • Erkek • Golden Retriever</div>
+                <div class="dog-name">Oscar</div>
+                <div class="dog-age">4 yaşında • Erkek • Rottweiler</div>
             </div>
 
             <!-- Köpek bilgileri grid -->
@@ -437,7 +437,7 @@
         function showPhoto(photoNumber) {
             const photos = ['🐕', '🎾', '🏃', '🏊'];
             const messages = [
-                'Charlie en yakışıklı halinde!',
+                'Oscar en yakışıklı halinde!',
                 'En sevdiği oyuncağı ile',
                 'Parkta koşarken',
                 'Denizde yüzmeyi çok seviyor!'
@@ -449,12 +449,12 @@
 
         // === MESAJ GÖNDERME FONKSİYONU ===
         function sendMessage() {
-            const subject = "PawMatch - Charlie ile İletişim Talebi";
+            const subject = "PawMatch - Oscar ile İletişim Talebi";
             const body = `Merhaba!
 
-PawMatch sitesinde Charlie'nin profilini gördüm ve çok beğendim! 🐕
+PawMatch sitesinde Oscar'ın profilini gördüm ve çok beğendim! 🐕
 
-Köpeğim ile Charlie'yi tanıştırmak istiyorum. Aşağıdaki bilgileri paylaşarak iletişim kurabiliriz:
+Köpeğim ile Oscar'ı tanıştırmak istiyorum. Aşağıdaki bilgileri paylaşarak iletişim kurabiliriz:
 
 📍 Konum: 
 📱 Telefon: 
@@ -466,7 +466,7 @@ Parkta buluşmak için uygun bir zaman ayarlayabilir miyiz?
 
 Selamlar! 🐾`;
             
-            const emailAddress = "charlie.sahibi@email.com";
+            const emailAddress = "oscarbaykal@gmail.com";
             
             // Email uygulamasını aç
             const emailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -478,23 +478,23 @@ Selamlar! 🐾`;
             const subject = "🐕❤️ PawMatch - Yeni İlgi Bildirimi!";
             const body = `Harika haber! 🎉
 
-Birisi Charlie'nin profilini beğendi ve ilgi gösterdi!
+Birisi Oscar'in profilini beğendi ve ilgi gösterdi!
 
-Bu kişi Charlie ile tanışmak istiyor. Eğer sen de ilgileniyorsan, bu kişiye geri dönebilirsin.
+Bu kişi Oscar ile tanışmak istiyor. Eğer sen de ilgileniyorsan, bu kişiye geri dönebilirsin.
 
 PawMatch'te yeni arkadaşlıklar seni bekliyor! 🐾
 
 ---
 Bu otomatik bir bildirimdir.`;
             
-            const emailAddress = "charlie.sahibi@email.com";
+            const emailAddress = "oscarbaykal@gmail.com";
             
             // Email uygulamasını aç
             const emailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = emailUrl;
             
             // Başarı mesajı göster
-            alert("İlgi bildirimi gönderildi! Charlie'nin sahibi yakında senden haber alacak. 💕");
+            alert("İlgi bildirimi gönderildi! Oscar'ın sahibi yakında senden haber alacak. 💕");
             
             // Kalp animasyonu başlat
             createHearts();
