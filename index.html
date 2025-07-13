@@ -1,376 +1,363 @@
-<!-- Ana profil kartı -->
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-    <!-- Sayfa karakter kodlaması ve responsive ayarları -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PawMatch - Köpek Arkadaşlık Sitesi</title>
     <style>
-        /* Tüm elementlerin margin, padding ve box-sizing ayarlarını sıfırla */
+        /* === GENEL RESET VE TEMEL STILLER === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Sayfa gövdesi için genel ayarlar */
+        /* Ana sayfa gövdesi - mor gradient arkaplan */
         body {
-            font-family: 'Arial', sans-serif; /* Yazı tipi */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Mor-mavi gradient arkaplan */
-            min-height: 100vh; /* Minimum yükseklik = ekran yüksekliği */
-            color: #333; /* Yazı rengi */
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
             overflow-x: hidden; /* Yatay kaydırma çubuğunu gizle */
         }
 
-        /* Ana içerik konteyner - ortalanmış ve sınırlandırılmış genişlik */
+        /* Ana container - içeriği ortalar */
         .container {
-            max-width: 1200px; /* Maksimum genişlik */
-            margin: 0 auto; /* Ortala */
-            padding: 20px; /* İç boşluk */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* Sayfa başlığı bölümü */
+        /* === HEADER BÖLÜMÜ === */
         header {
-            text-align: center; /* Yazıyı ortala */
-            margin-bottom: 40px; /* Alt boşluk */
-            animation: fadeInDown 1s ease-out; /* Yukarıdan aşağı fade animasyonu */
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out; /* Yukarıdan aşağıya animasyon */
         }
 
-        /* Ana logo yazısı */
+        /* Ana logo */
         .logo {
-            font-size: 3rem; /* Büyük yazı boyutu */
-            font-weight: bold; /* Kalın yazı */
-            color: #fff; /* Beyaz renk */
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Gölge efekti */
-            margin-bottom: 10px; /* Alt boşluk */
+            margin-bottom: 10px;
         }
 
-        /* Alt yazı (slogan) */
+        /* Logo altındaki slogan */
         .tagline {
-            font-size: 1.2rem; /* Orta yazı boyutu */
-            color: #f0f0f0; /* Açık gri renk */
-            margin-bottom: 30px; /* Alt boşluk */
+            font-size: 1.2rem;
+            color: #f0f0f0;
+            margin-bottom: 30px;
         }
 
-        /* Ana profil kartı - glassmorphism efektli */
+        /* === PROFIL KARTI === */
         .profile-card {
             background: rgba(255, 255, 255, 0.95); /* Şeffaf beyaz arkaplan */
-            border-radius: 20px; /* Yuvarlak köşeler */
-            padding: 40px; /* İç boşluk */
-            margin-bottom: 30px; /* Alt boşluk */
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Yumuşak gölge */
-            backdrop-filter: blur(10px); /* Arkaplan bulanıklığı */
-            border: 1px solid rgba(255,255,255,0.2); /* İnce beyaz kenarlık */
-            animation: fadeInUp 1s ease-out; /* Aşağıdan yukarı fade animasyonu */
-            position: relative; /* Pozisyon ayarı */
-            overflow: hidden; /* Taşan içeriği gizle */
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1); /* Gölge efekti */
+            backdrop-filter: blur(10px); /* Bulanıklık efekti */
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: fadeInUp 1s ease-out; /* Aşağıdan yukarıya animasyon */
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Profil kartının üst kısmında renkli şerit */
+        /* Profil kartının üstündeki renkli çizgi */
         .profile-card::before {
-            content: ''; /* Boş içerik */
-            position: absolute; /* Mutlak pozisyon */
-            top: 0; /* Üste yapıştır */
-            left: 0; /* Sola yapıştır */
-            right: 0; /* Sağa yapıştır */
-            height: 5px; /* Yükseklik */
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4); /* Renkli gradient */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
             animation: shimmer 2s infinite; /* Parıltı animasyonu */
         }
 
-        /* Profil başlık bölümü */
+        /* === PROFIL HEADER === */
         .profile-header {
-            text-align: center; /* Ortala */
-            margin-bottom: 30px; /* Alt boşluk */
+            text-align: center;
+            margin-bottom: 30px;
         }
 
-        /* Köpek profil fotoğrafı (emoji) */
+        /* Köpek fotoğrafı placeholder */
         .dog-photo {
-            width: 200px; /* Genişlik */
-            height: 200px; /* Yükseklik */
-            border-radius: 50%; /* Tamamen yuvarlak */
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* Gradient arkaplan */
-            margin: 0 auto 20px; /* Ortala ve alt boşluk */
-            display: flex; /* Flex konteyner */
-            align-items: center; /* Dikey ortala */
-            justify-content: center; /* Yatay ortala */
-            font-size: 4rem; /* Büyük emoji boyutu */
+            width: 200px;
+            height: 200px;
+            border-radius: 50%; /* Yuvarlak yapma */
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
             animation: pulse 2s infinite; /* Nabız animasyonu */
-            cursor: pointer; /* Fare işaretçisi */
-            transition: transform 0.3s ease; /* Yumuşak dönüşüm */
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        /* Köpek fotoğrafı üzerine gelindiğinde büyüt */
+        /* Fotoğrafa hover efekti */
         .dog-photo:hover {
-            transform: scale(1.1); /* %110 büyüt */
+            transform: scale(1.1);
         }
 
-        /* Köpek adı */
+        /* Köpek ismi */
         .dog-name {
-            font-size: 2.5rem; /* Büyük yazı */
-            color: #333; /* Koyu gri */
-            margin-bottom: 10px; /* Alt boşluk */
-            font-weight: bold; /* Kalın yazı */
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        /* Köpek yaş bilgisi */
+        /* Köpek yaşı ve detayları */
         .dog-age {
-            font-size: 1.2rem; /* Orta yazı boyutu */
-            color: #666; /* Gri renk */
-            margin-bottom: 20px; /* Alt boşluk */
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
         }
 
-        /* Bilgi kartları için grid düzeni */
+        /* === BİLGİ GRID SİSTEMİ === */
         .info-grid {
-            display: grid; /* Grid konteyner */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Otomatik responsive sütunlar */
-            gap: 20px; /* Kartlar arası boşluk */
-            margin-bottom: 30px; /* Alt boşluk */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        /* Her bir bilgi kartı */
+        /* Her bir bilgi kutusu */
         .info-item {
-            background: rgba(255,255,255,0.7); /* Şeffaf beyaz arkaplan */
-            padding: 20px; /* İç boşluk */
-            border-radius: 15px; /* Yuvarlak köşeler */
-            text-align: center; /* Yazıyı ortala */
-            transition: transform 0.3s ease; /* Yumuşak dönüşüm */
+            background: rgba(255,255,255,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        /* Bilgi kartı üzerine gelindiğinde yukarı kaldır */
+        /* Bilgi kutusuna hover efekti */
         .info-item:hover {
-            transform: translateY(-5px); /* 5px yukarı kaldır */
+            transform: translateY(-5px); /* Yukarı kayma */
         }
 
-        /* Bilgi etiketi (başlık) */
+        /* Bilgi etiketi */
         .info-label {
-            font-weight: bold; /* Kalın yazı */
-            color: #555; /* Orta gri */
-            margin-bottom: 5px; /* Alt boşluk */
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
         }
 
-        /* Bilgi değeri (içerik) */
+        /* Bilgi değeri */
         .info-value {
-            font-size: 1.1rem; /* Biraz büyük yazı */
-            color: #333; /* Koyu gri */
+            font-size: 1.1rem;
+            color: #333;
         }
 
-        /* İlgi alanları bölümü */
+        /* === İLGİ ALANLARI === */
         .interests {
-            background: rgba(255,255,255,0.7); /* Şeffaf beyaz arkaplan */
-            padding: 20px; /* İç boşluk */
-            border-radius: 15px; /* Yuvarlak köşeler */
-            margin-bottom: 30px; /* Alt boşluk */
+            background: rgba(255,255,255,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
 
-        /* İlgi alanları başlığı */
         .interests h3 {
-            text-align: center; /* Ortala */
-            margin-bottom: 15px; /* Alt boşluk */
-            color: #555; /* Gri renk */
+            text-align: center;
+            margin-bottom: 15px;
+            color: #555;
         }
 
-        /* İlgi alanları etiketleri için konteyner */
+        /* İlgi alanları tag container */
         .interest-tags {
-            display: flex; /* Flex konteyner */
-            flex-wrap: wrap; /* Yeni satıra geçmeye izin ver */
-            gap: 10px; /* Etiketler arası boşluk */
-            justify-content: center; /* Ortala */
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
         }
 
-        /* Her bir ilgi alanı etiketi */
+        /* Her bir ilgi alanı tag'i */
         .tag {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* Gradient arkaplan */
-            color: white; /* Beyaz yazı */
-            padding: 8px 16px; /* İç boşluk */
-            border-radius: 20px; /* Yuvarlak köşeler */
-            font-size: 0.9rem; /* Küçük yazı */
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             animation: float 3s ease-in-out infinite; /* Yüzme animasyonu */
         }
 
-        /* Tek numaralı etiketler için animasyon gecikmesi */
+        /* Tek numaralı tag'lere gecikme */
         .tag:nth-child(odd) {
-            animation-delay: 0.5s; /* 0.5 saniye gecikme */
+            animation-delay: 0.5s;
         }
 
-        /* Aksiyona çağrı bölümü (butonlar) */
+        /* === CALL TO ACTION BÖLÜMÜ === */
         .cta-section {
-            text-align: center; /* Ortala */
-            margin-top: 40px; /* Üst boşluk */
+            text-align: center;
+            margin-top: 40px;
         }
 
         /* İletişim butonları */
         .contact-btn {
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4); /* Gradient arkaplan */
-            color: white; /* Beyaz yazı */
-            padding: 15px 40px; /* İç boşluk */
-            border: none; /* Kenarlık yok */
-            border-radius: 50px; /* Oval şekil */
-            font-size: 1.2rem; /* Büyük yazı */
-            font-weight: bold; /* Kalın yazı */
-            cursor: pointer; /* Fare işaretçisi */
-            transition: all 0.3s ease; /* Yumuşak dönüşüm */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Gölge */
-            margin: 0 10px; /* Yan boşluk */
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 0 10px;
         }
 
-        /* Buton üzerine gelindiğinde efekt */
+        /* Buton hover efekti */
         .contact-btn:hover {
-            transform: translateY(-3px); /* 3px yukarı kaldır */
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3); /* Gölgeyi büyüt */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
         }
 
-        /* Fotoğraf galerisi bölümü */
+        /* === FOTOĞRAF GALERİSİ === */
         .gallery {
-            background: rgba(255,255,255,0.7); /* Şeffaf beyaz arkaplan */
-            padding: 20px; /* İç boşluk */
-            border-radius: 15px; /* Yuvarlak köşeler */
-            margin-bottom: 30px; /* Alt boşluk */
+            background: rgba(255,255,255,0.7);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
 
-        /* Galeri başlığı */
         .gallery h3 {
-            text-align: center; /* Ortala */
-            margin-bottom: 20px; /* Alt boşluk */
-            color: #555; /* Gri renk */
+            text-align: center;
+            margin-bottom: 20px;
+            color: #555;
         }
 
-        /* Fotoğraf galerisi için grid düzeni */
+        /* Fotoğraf grid sistemi */
         .photo-grid {
-            display: grid; /* Grid konteyner */
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Otomatik responsive sütunlar */
-            gap: 15px; /* Fotoğraflar arası boşluk */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
         }
 
         /* Fotoğraf placeholder'ları */
         .photo-placeholder {
-            aspect-ratio: 1; /* Kare şekil (1:1 oran) */
-            background: linear-gradient(45deg, #96ceb4, #45b7d1); /* Gradient arkaplan */
-            border-radius: 10px; /* Yuvarlak köşeler */
-            display: flex; /* Flex konteyner */
-            align-items: center; /* Dikey ortala */
-            justify-content: center; /* Yatay ortala */
-            font-size: 2rem; /* Büyük emoji */
-            cursor: pointer; /* Fare işaretçisi */
-            transition: transform 0.3s ease; /* Yumuşak dönüşüm */
+            aspect-ratio: 1; /* Kare şeklinde */
+            background: linear-gradient(45deg, #96ceb4, #45b7d1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
 
-        /* Fotoğraf üzerine gelindiğinde büyüt */
+        /* Fotoğraf hover efekti */
         .photo-placeholder:hover {
-            transform: scale(1.05); /* %105 büyüt */
+            transform: scale(1.05);
         }
 
-        /* Kalp animasyonları için konteyner */
+        /* === KALP ANİMASYONU === */
         .hearts {
-            position: absolute; /* Mutlak pozisyon */
-            top: 0; /* Üste yapıştır */
-            left: 0; /* Sola yapıştır */
-            width: 100%; /* Tam genişlik */
-            height: 100%; /* Tam yükseklik */
-            pointer-events: none; /* Fare olaylarını engelle */
-            overflow: hidden; /* Taşan içeriği gizle */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Tıklama engellemez */
+            overflow: hidden;
         }
 
-        /* Her bir kalp elementi */
         .heart {
-            position: absolute; /* Mutlak pozisyon */
-            font-size: 20px; /* Kalp boyutu */
-            color: rgba(255, 107, 107, 0.7); /* Kırmızı şeffaf renk */
-            animation: floatHeart 4s linear infinite; /* Yüzen kalp animasyonu */
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 107, 107, 0.7);
+            animation: floatHeart 4s linear infinite;
         }
 
-        /* CSS ANİMASYONLARI */
-        
-        /* Yukarıdan aşağı fade animasyonu */
+        /* === ANİMASYON TANIMLARI === */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); } /* Başlangıç: görünmez, 50px yukarıda */
-            to { opacity: 1; transform: translateY(0); } /* Bitiş: görünür, normal pozisyon */
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Aşağıdan yukarı fade animasyonu */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); } /* Başlangıç: görünmez, 50px aşağıda */
-            to { opacity: 1; transform: translateY(0); } /* Bitiş: görünür, normal pozisyon */
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Nabız animasyonu (büyü-küçül) */
         @keyframes pulse {
-            0%, 100% { transform: scale(1); } /* Başlangıç ve bitiş: normal boyut */
-            50% { transform: scale(1.05); } /* Ortada: %105 büyüt */
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        /* Yüzme animasyonu (yukarı-aşağı) */
         @keyframes float {
-            0%, 100% { transform: translateY(0); } /* Başlangıç ve bitiş: normal pozisyon */
-            50% { transform: translateY(-5px); } /* Ortada: 5px yukarı */
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        /* Parıltı animasyonu (gradient kayması) */
         @keyframes shimmer {
-            0% { background-position: -200px 0; } /* Başlangıç: 200px sola */
-            100% { background-position: 200px 0; } /* Bitiş: 200px sağa */
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
         }
 
-        /* Kalp yüzme animasyonu (aşağıdan yukarı) */
         @keyframes floatHeart {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } /* Başlangıç: ekranın altında, görünmez */
-            10% { opacity: 1; } /* %10'da görünür ol */
-            90% { opacity: 1; } /* %90'a kadar görünür kal */
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; } /* Bitiş: yukarıda, 360° döndür, görünmez */
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
-        /* Sayfa alt bilgi */
+        /* === FOOTER === */
         .footer {
-            text-align: center; /* Ortala */
-            margin-top: 40px; /* Üst boşluk */
-            color: rgba(255,255,255,0.8); /* Şeffaf beyaz */
-            font-style: italic; /* İtalik yazı */
+            text-align: center;
+            margin-top: 40px;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
         }
 
-        /* MOBİL RESPONSIVE AYARLARI */
-        /* Ekran genişliği 768px'den küçük olduğunda */
+        /* === RESPONSIVE TASARIM === */
         @media (max-width: 768px) {
-            .logo { font-size: 2rem; } /* Logo boyutunu küçült */
-            .dog-name { font-size: 2rem; } /* Köpek adı boyutunu küçült */
-            .profile-card { padding: 20px; } /* Kart iç boşluğunu azalt */
-            .info-grid { grid-template-columns: 1fr; } /* Tek sütun yap */
+            .logo { font-size: 2rem; }
+            .dog-name { font-size: 2rem; }
+            .profile-card { padding: 20px; }
+            .info-grid { grid-template-columns: 1fr; }
             
-            /* Sadece mobil için buton ayarları - bilgisayar görünümünü değiştirmez */
             .contact-btn {
-                display: block; /* Blok element yap - alt alta dizilsin */
-                width: 80%; /* Genişliği %80 yap */
-                margin: 10px auto; /* Ortala ve üst-alt 10px boşluk */
+                display: block;
+                width: 80%;
+                margin: 10px auto;
             }
         }
         
-        /* Çok küçük ekranlar için (iPhone SE gibi) - sadece buton aralığını artır */
         @media (max-width: 480px) {
             .contact-btn {
-                margin: 15px auto; /* Butonlar arası boşluğu artır */
+                margin: 15px auto;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Kalp animasyonları için konteyner -->
+    <!-- Kalp animasyonu container -->
     <div class="hearts" id="hearts"></div>
     
-    <!-- Ana içerik konteyneri -->
     <div class="container">
-        <!-- Sayfa başlığı -->
+        <!-- === SAYFA BAŞLIĞI === -->
         <header>
             <div class="logo">🐕 PawMatch</div>
             <div class="tagline">Köpek dostlarını buluşturan platform</div>
         </header>
 
+        <!-- === KÖPEK PROFİL KARTI === -->
         <div class="profile-card">
+            <!-- Profil başlığı -->
             <div class="profile-header">
                 <div class="dog-photo" onclick="changePhoto()">🐕</div>
                 <div class="dog-name">Charlie</div>
                 <div class="dog-age">3 yaşında • Erkek • Golden Retriever</div>
             </div>
 
+            <!-- Köpek bilgileri grid -->
             <div class="info-grid">
                 <div class="info-item">
                     <div class="info-label">Kilo</div>
@@ -390,6 +377,7 @@
                 </div>
             </div>
 
+            <!-- İlgi alanları bölümü -->
             <div class="interests">
                 <h3>🎾 İlgi Alanları</h3>
                 <div class="interest-tags">
@@ -402,6 +390,7 @@
                 </div>
             </div>
 
+            <!-- Fotoğraf galerisi -->
             <div class="gallery">
                 <h3>📸 Fotoğraf Galerisi</h3>
                 <div class="photo-grid">
@@ -412,33 +401,39 @@
                 </div>
             </div>
 
+            <!-- İletişim butonları -->
             <div class="cta-section">
                 <button class="contact-btn" onclick="sendMessage()">💌 Mesaj Gönder</button>
                 <button class="contact-btn" onclick="showInterest()">❤️ İlgi Göster</button>
             </div>
         </div>
 
+        <!-- Sayfa footer -->
         <div class="footer">
             "En iyi dostluklar parkta başlar!" 🐾
         </div>
     </div>
 
     <script>
+        // === GLOBAL DEĞİŞKENLER ===
         const dogEmojis = ['🐕', '🐶', '🦮', '🐕‍🦺', '🐩'];
         let currentEmojiIndex = 0;
 
+        // === FOTOĞRAF DEĞİŞTİRME FONKSİYONU ===
         function changePhoto() {
             const photoElement = document.querySelector('.dog-photo');
+            // Sonraki emoji'ye geç
             currentEmojiIndex = (currentEmojiIndex + 1) % dogEmojis.length;
             photoElement.textContent = dogEmojis[currentEmojiIndex];
             
-            // Animasyon efekti
+            // Tıklama animasyonu
             photoElement.style.transform = 'scale(1.2)';
             setTimeout(() => {
                 photoElement.style.transform = 'scale(1)';
             }, 200);
         }
 
+        // === FOTOĞRAF GÖSTERME FONKSİYONU ===
         function showPhoto(photoNumber) {
             const photos = ['🐕', '🎾', '🏃', '🏊'];
             const messages = [
@@ -448,66 +443,97 @@
                 'Denizde yüzmeyi çok seviyor!'
             ];
             
+            // Fotoğraf açıklamasını göster
             alert(messages[photoNumber - 1]);
         }
 
+        // === MESAJ GÖNDERME FONKSİYONU ===
         function sendMessage() {
-            const messages = [
-                'Merhaba! Charlie sizin köpeğinizle tanışmak istiyor! 🐕',
-                'Charlie: "Woof! Arkadaş olmak ister misin?" 🐾',
-                'Parkta buluşalım mı? Charlie çok heyecanlı! 🎾',
-            ];
+            const subject = "PawMatch - Charlie ile İletişim Talebi";
+            const body = `Merhaba!
+
+PawMatch sitesinde Charlie'nin profilini gördüm ve çok beğendim! 🐕
+
+Köpeğim ile Charlie'yi tanıştırmak istiyorum. Aşağıdaki bilgileri paylaşarak iletişim kurabiliriz:
+
+📍 Konum: 
+📱 Telefon: 
+🐕 Köpeğimin adı: 
+🎂 Köpeğimin yaşı: 
+🐾 Köpeğimin cinsi: 
+
+Parkta buluşmak için uygun bir zaman ayarlayabilir miyiz?
+
+Selamlar! 🐾`;
             
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            alert(randomMessage);
+            const emailAddress = "charlie.sahibi@email.com";
+            
+            // Email uygulamasını aç
+            const emailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = emailUrl;
         }
 
+        // === İLGİ GÖSTERME FONKSİYONU ===
         function showInterest() {
-            const interests = [
-                'Charlie seni beğendi! ❤️',
-                'Kalp gönderildi! 💕',
-                'Charlie: "Seni çok sevdim!" 🥰',
-                'Eşleşme başarılı! 🎉'
-            ];
+            const subject = "🐕❤️ PawMatch - Yeni İlgi Bildirimi!";
+            const body = `Harika haber! 🎉
+
+Birisi Charlie'nin profilini beğendi ve ilgi gösterdi!
+
+Bu kişi Charlie ile tanışmak istiyor. Eğer sen de ilgileniyorsan, bu kişiye geri dönebilirsin.
+
+PawMatch'te yeni arkadaşlıklar seni bekliyor! 🐾
+
+---
+Bu otomatik bir bildirimdir.`;
             
-            const randomInterest = interests[Math.floor(Math.random() * interests.length)];
-            alert(randomInterest);
+            const emailAddress = "charlie.sahibi@email.com";
             
-            // Kalp animasyonu
+            // Email uygulamasını aç
+            const emailUrl = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = emailUrl;
+            
+            // Başarı mesajı göster
+            alert("İlgi bildirimi gönderildi! Charlie'nin sahibi yakında senden haber alacak. 💕");
+            
+            // Kalp animasyonu başlat
             createHearts();
         }
 
+        // === KALP ANİMASYONU OLUŞTURMA ===
         function createHearts() {
             const heartsContainer = document.getElementById('hearts');
             
+            // 20 adet kalp oluştur
             for (let i = 0; i < 20; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
                 heart.textContent = '❤️';
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 2 + 's';
-                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.left = Math.random() * 100 + '%'; // Rastgele yatay pozisyon
+                heart.style.animationDelay = Math.random() * 2 + 's'; // Rastgele gecikme
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Rastgele süre
                 
                 heartsContainer.appendChild(heart);
                 
-                // Kalbi 4 saniye sonra sil
+                // 4 saniye sonra kalbi kaldır
                 setTimeout(() => {
                     heart.remove();
                 }, 4000);
             }
         }
 
-        // Sayfa yüklendiğinde otomatik kalp animasyonu
+        // === SAYFA YÜKLENDİĞİNDE ÇALIŞACAK KODLAR ===
         window.addEventListener('load', () => {
+            // Sayfa yüklendikten 1 saniye sonra kalp animasyonu başlat
             setTimeout(() => {
                 createHearts();
             }, 1000);
         });
 
-        // Her 10 saniyede bir otomatik kalp animasyonu
+        // Her 10 saniyede bir kalp animasyonu tekrarla
         setInterval(createHearts, 10000);
 
-        // Hover efektleri için ekstra JavaScript
+        // === TAG HOVER EFEKTLERİ ===
         document.querySelectorAll('.tag').forEach(tag => {
             tag.addEventListener('mouseenter', () => {
                 tag.style.transform = 'scale(1.1)';
