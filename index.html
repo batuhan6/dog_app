@@ -353,7 +353,7 @@
             <!-- Profil başlığı -->
             <div class="profile-header">
                 <div class="dog-photo" onclick="changePhoto()">
-                    <img src="oscar-ve-abisi.PNG" alt="Oscar ve abisi" style="width: 100%; height: auto;">                
+                    <img src="yakışıklı.PNG" alt="Oscar en yakışıklı hali" style="width: 100%; height: auto;">                
                 </div>
                 <div class="dog-name">Oscar</div>
                 <div class="dog-age">4 yaşında • Erkek • Rottweiler</div>
@@ -396,11 +396,15 @@
             <div class="gallery">
                 <h3>📸 Fotoğraf Galerisi</h3>
                 <div class="photo-grid">
-                    <div class="photo-placeholder" onclick="showPhoto(1)"> 🏃 </div>
+                    <div class="photo-placeholder" onclick="showPhoto(1)">
+                        <img src="oscar-ve-abisi.PNG" alt="Oscar ve abisi" style="width: 100%; height: auto;"> 
+                    </div>
                     <div class="photo-placeholder" onclick="showPhoto(2)">
                         <img src="oscar-top-oynuyor.PNG" alt="Oscar top oynuyor" style="width: 100%; height: auto;">
                     </div>
-                    <div class="photo-placeholder" onclick="showPhoto(3)">🏃</div>
+                    <div class="photo-placeholder" onclick="showPhoto(3)">
+                        <img src="kar.PNG" alt="Karda oynarken" style="width: 100%; height: auto;"> 
+                    </div>
                     <div class="photo-placeholder" onclick="showPhoto(4)">
                         <img src="oscar-macera.PNG" alt="Oscar yeni bir maceraya giderken" style="width: auto; height: 100%;">
                     </div>
@@ -443,9 +447,9 @@
         function showPhoto(photoNumber) {
             const photos = ['🐕', 'oscar-top-oynuyor.PNG', '🏃', 'oscar-macera.PNG'];
             const messages = [
-                'Oscar en yakışıklı halinde!',
+                'Abimle takılmaca!',
                 'En sevdiği oyuncağı ile',
-                'Parkta koşarken',
+                'Karda oynarken',
                 'Yeni maceralar yeni heyecanlar!'
             ];
             
